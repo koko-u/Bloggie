@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bloggie.Web", "Web\Bloggie.Web.csproj", "{333BF2CF-5AA3-47AB-9053-49D8F3201F70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bloggie.Db", "Db\Bloggie.Db.csproj", "{72E30AC2-3C80-4828-913D-182DE9F1C288}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{333BF2CF-5AA3-47AB-9053-49D8F3201F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{333BF2CF-5AA3-47AB-9053-49D8F3201F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{333BF2CF-5AA3-47AB-9053-49D8F3201F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E30AC2-3C80-4828-913D-182DE9F1C288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E30AC2-3C80-4828-913D-182DE9F1C288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E30AC2-3C80-4828-913D-182DE9F1C288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E30AC2-3C80-4828-913D-182DE9F1C288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
