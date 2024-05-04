@@ -1,5 +1,6 @@
 ﻿@page
-@model Bloggie.Web.Pages.Admin.Blogs.AddModel
+@using Bloggie.Web.Pages.Admin.Blogs
+@model AddModel
 @{
 }
 
@@ -13,66 +14,66 @@
     <div class="container">
         <form method="POST">
             <div class="row mb-3">
-                <label for="heading" class="col-sm-2 col-form-label">Heading</label>
+                <label asp-for="AddBlogPost.Heading" class="col-sm-2 col-form-label">Heading</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="heading">
+                    <input type="text" class="form-control" asp-for="AddBlogPost.Heading">
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="page-title" class="col-sm-2 col-form-label">Page Title</label>
+                <label asp-for="AddBlogPost.PageTitle" class="col-sm-2 col-form-label">Page Title</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="page-title">
+                    <input type="text" class="form-control" asp-for="AddBlogPost.PageTitle">
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="content" class="col-sm-2 col-form-label">Content</label>
+                <label asp-for="AddBlogPost.Content" class="col-sm-2 col-form-label">Content</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" id="content"></textarea>
+                    <textarea class="form-control" rows="3" asp-for="AddBlogPost.Content"></textarea>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="short-description" class="col-sm-2 col-form-label">Short Description</label>
+                <label asp-for="AddBlogPost.ShortDescription" class="col-sm-2 col-form-label">Short Description</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="short-description">
+                    <input type="text" class="form-control" asp-for="AddBlogPost.ShortDescription">
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="featured-image-url" class="col-sm-2 col-form-label">Featured Image Url</label>
+                <label asp-for="AddBlogPost.FeaturedImageUrl" class="col-sm-2 col-form-label">Featured Image Url</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="featured-image-url">
+                    <input type="text" class="form-control" asp-for="AddBlogPost.FeaturedImageUrl">
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="url-handle" class="col-sm-2 col-form-label">Url Handle</label>
+                <label asp-for="AddBlogPost.UrlHandle" class="col-sm-2 col-form-label">Url Handle</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="url-handle">
+                    <input type="text" class="form-control" asp-for="AddBlogPost.UrlHandle">
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="published-on" class="col-sm-2 col-form-label">Published On</label>
+                <label asp-for="AddBlogPost.PublishedOn" class="col-sm-2 col-form-label">Published On</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="published-on">
+                    <input type="date" class="form-control" asp-for="AddBlogPost.PublishedOn">
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="author" class="col-sm-2 col-form-label">Author</label>
+                <label asp-for="AddBlogPost.Author" class="col-sm-2 col-form-label">Author</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="author">
+                    <input type="text" class="form-control" asp-for="AddBlogPost.Author">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-sm-10 offset-sm-2">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="is-visible">
-                        <label class="form-check-label" for="is-visible">
+                        <input class="form-check-input" type="checkbox" asp-for="AddBlogPost.IsVisible">
+                        <label class="form-check-label" asp-for="AddBlogPost.IsVisible">
                             Is Visible
                         </label>
                     </div>
