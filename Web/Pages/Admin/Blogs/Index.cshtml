@@ -28,13 +28,26 @@
                     <td>@blogPost.Heading</td>
                     <td>@blogPost.PageTitle</td>
                     <td>@blogPost.ShortDescription</td>
-                    <td>
-                        <a
-                            asp-page="/Admin/Blogs/Edit"
-                            asp-route-id="@blogPost.Id"
-                            class="btn btn-outline-secondary btn-sm">
-                            Edit
-                        </a>
+                    <td class="d-flex justify-content-center align-content-center">
+                        <div class="mx-1">
+                            <a
+                                asp-page="/Admin/Blogs/Edit"
+                                asp-route-id="@blogPost.Id"
+                                class="btn btn-outline-secondary btn-sm">
+                                Edit
+                            </a>
+                        </div>
+
+                        <div class="mx-1">
+                            <form method="POST" asp-page-handler="Delete" asp-route-id="@blogPost.Id">
+                                <button
+                                    type="submit"
+                                    class="btn btn-outline-danger btn-sm">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+
                     </td>
                 </tr>
             }
