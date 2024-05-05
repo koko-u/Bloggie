@@ -1,8 +1,8 @@
 using AutoMapper;
 using Bloggie.Db.Models.Domain;
-using Bloggie.Web.Models.ViewModels;
+using Bloggie.Repo.Models.ViewModels;
 
-namespace Bloggie.Web.Profiles;
+namespace Bloggie.Repo.Profiles;
 
 public class BlogPostProfile : Profile
 {

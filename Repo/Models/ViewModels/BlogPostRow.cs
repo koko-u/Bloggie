@@ -1,4 +1,4 @@
-namespace Bloggie.Web.Models.ViewModels;
+namespace Bloggie.Repo.Models.ViewModels;
 
 public class BlogPostRow
 {
