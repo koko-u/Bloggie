@@ -1,0 +1,87 @@
+﻿@page "{id:guid}"
+@model EditModel
+@{
+}
+
+<div class=" bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h2>Edit Blog Post</h2>
+    </div>
+</div>
+
+<div class="mt-4">
+    <div class="container">
+        <form method="POST">
+            <div class="row mb-3">
+                <label asp-for="BlogPost.Heading" class="col-sm-2 col-form-label">Heading</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" asp-for="BlogPost.Heading">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label asp-for="BlogPost.PageTitle" class="col-sm-2 col-form-label">Page Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" asp-for="BlogPost.PageTitle">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label asp-for="BlogPost.Content" class="col-sm-2 col-form-label">Content</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" asp-for="BlogPost.Content"></textarea>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label asp-for="BlogPost.ShortDescription" class="col-sm-2 col-form-label">Short Description</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" asp-for="BlogPost.ShortDescription">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label asp-for="BlogPost.FeaturedImageUrl" class="col-sm-2 col-form-label">Featured Image Url</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" asp-for="BlogPost.FeaturedImageUrl">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label asp-for="BlogPost.UrlHandle" class="col-sm-2 col-form-label">Url Handle</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" asp-for="BlogPost.UrlHandle">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label asp-for="BlogPost.PublishedOn" class="col-sm-2 col-form-label">Published On</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" asp-for="BlogPost.PublishedOn">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label asp-for="BlogPost.Author" class="col-sm-2 col-form-label">Author</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" asp-for="BlogPost.Author">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-10 offset-sm-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="BlogPost.IsVisible">
+                        <label class="form-check-label" asp-for="BlogPost.IsVisible">
+                            Is Visible
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Blog Post</button>
+        </form>
+
+    </div>
+
+</div>

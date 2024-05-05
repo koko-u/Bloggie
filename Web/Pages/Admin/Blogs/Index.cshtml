@@ -29,7 +29,12 @@
                     <td>@blogPost.PageTitle</td>
                     <td>@blogPost.ShortDescription</td>
                     <td>
-                        <a href="#" class="btn btn-outline-secondary btn-sm">Edit</a>
+                        <a
+                            asp-page="/Admin/Blogs/Edit"
+                            asp-route-id="@blogPost.Id"
+                            class="btn btn-outline-secondary btn-sm">
+                            Edit
+                        </a>
                     </td>
                 </tr>
             }

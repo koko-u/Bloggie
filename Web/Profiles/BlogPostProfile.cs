@@ -20,5 +20,19 @@ public class BlogPostProfile : Profile
             ;
 
         CreateMap<BlogPost, BlogPostRow>();
+
+        CreateMap<BlogPostRow, BlogPost>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.Heading, opt => opt.PreCondition(src => !string.IsNullOrEmpty(src.Heading)))
+            .ForMember(dest => dest.PageTitle, opt => opt.PreCondition(src => !string.IsNullOrEmpty(src.PageTitle)))
+            .ForMember(dest => dest.Content, opt => opt.PreCondition(src => !string.IsNullOrEmpty(src.Content)))
+            .ForMember(dest => dest.ShortDescription,
+                opt => opt.PreCondition(src => !string.IsNullOrEmpty(src.ShortDescription)))
+            .ForMember(dest => dest.FeaturedImageUrl,
+                opt => opt.PreCondition(src => !string.IsNullOrEmpty(src.FeaturedImageUrl)))
+            .ForMember(dest => dest.UrlHandle, opt => opt.PreCondition(src => !string.IsNullOrEmpty(src.UrlHandle)))
+            .ForMember(dest => dest.PublishedOn, opt => opt.PreCondition(src => src.PublishedOn is not null))
+            .ForMember(dest => dest.Author, opt => opt.PreCondition(src => !string.IsNullOrEmpty(src.Author)))
+            ;
     }
 }
