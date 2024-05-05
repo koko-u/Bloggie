@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@{
+}
+<div class=" bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h2>Blog Posts</h2>
+    </div>
+</div>
+
+<div class="mt-4">
+    <div class="container">
+        <table class="table table-striped align-middle">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Heading</th>
+                <th>Page Title</th>
+                <th>Short Description</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var blogPost in Model.BlogPosts)
+            {
+                <tr>
+                    <td>@blogPost.Id</td>
+                    <td>@blogPost.Heading</td>
+                    <td>@blogPost.PageTitle</td>
+                    <td>@blogPost.ShortDescription</td>
+                    <td>
+                        <a href="#" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

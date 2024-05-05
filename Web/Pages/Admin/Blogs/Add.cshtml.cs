@@ -20,6 +20,6 @@ public class AddModel(BloggieDbContext dbContext, IMapper mapper) : PageModel
         await dbContext.BlogPosts.AddAsync(blogPost);
         await dbContext.SaveChangesAsync();
 
-        return RedirectToPage("/Index");
+        return RedirectToPage("/Admin/Blogs/Index");
     }
 }
