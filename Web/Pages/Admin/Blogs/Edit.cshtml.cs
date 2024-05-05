@@ -1,40 +1,36 @@
-using AutoMapper;
-using Bloggie.Db.Data;
-using Bloggie.Db.Models.Domain;
-using Bloggie.Web.Models.ViewModels;
+using Bloggie.Repo;
+using Bloggie.Repo.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace Bloggie.Web.Pages.Admin.Blogs;
 
-public class EditModel(BloggieDbContext dbContext, IMapper mapper) : PageModel
+public class EditModel(IBlogPostsRepository blogPostsRepository) : PageModel
 {
     [BindProperty]
     public required BlogPostRow BlogPost { get; set; }
 
     public async Task<IActionResult> OnGetAsync(Guid id)
     {
-        var blogPost = await dbContext.BlogPosts.SingleOrDefaultAsync(blogPost => blogPost.Id == id);
+        var blogPost = await blogPostsRepository.GetByIdAsync(id);
         if (blogPost is null)
         {
+            // TODO: add not found message.
             return RedirectToPage("/Admin/Blogs/Index");
         }
 
-        BlogPost = mapper.Map<BlogPost, BlogPostRow>(blogPost);
+        BlogPost = blogPost;
         return Page();
     }
 
     public async Task<IActionResult> OnPostAsync(Guid id)
     {
-        var dbBlogPost = await dbContext.BlogPosts.SingleOrDefaultAsync(blogPost => blogPost.Id == id);
-        if (dbBlogPost is null)
+        var updatedBlogPost = await blogPostsRepository.UpdateAsync(id, BlogPost);
+        if (updatedBlogPost is null)
         {
+            // TODO: add not found message.
             return RedirectToPage("/Admin/Blogs/Index");
         }
-
-        mapper.Map(BlogPost, dbBlogPost);
-        await dbContext.SaveChangesAsync();
 
         return RedirectToPage("/Admin/Blogs/Index");
     }

@@ -1,11 +1,15 @@
 using Bloggie.Db.Data;
-using Bloggie.Web.Profiles;
+using Bloggie.Repo;
+using Bloggie.Repo.Profiles;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Add Repositories
+builder.Services.AddScoped<IBlogPostsRepository, BlogPostsRepository>();
 
 // Add DbContext
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

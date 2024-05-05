@@ -1,4 +1,4 @@
-namespace Bloggie.Web.Models.ViewModels;
+namespace Bloggie.Repo.Models.ViewModels;
 
 public class AddBlogPost
 {
@@ -19,5 +19,4 @@ public class AddBlogPost
     public string? Author { get; set; }
 
     public bool IsVisible { get; set; } = false;
-
 }

@@ -1,24 +1,18 @@
-using AutoMapper;
-using Bloggie.Db.Data;
-using Bloggie.Db.Models.Domain;
-using Bloggie.Web.Models.ViewModels;
+using Bloggie.Repo;
+using Bloggie.Repo.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Bloggie.Web.Pages.Admin.Blogs;
 
-public class AddModel(BloggieDbContext dbContext, IMapper mapper) : PageModel
+public class AddModel(IBlogPostsRepository blogPostsRepository) : PageModel
 {
     [BindProperty]
     public AddBlogPost AddBlogPost { get; set; } = new();
 
     public async Task<IActionResult> OnPostAsync()
     {
-        var blogPost = new BlogPost();
-        mapper.Map(AddBlogPost, blogPost);
-
-        await dbContext.BlogPosts.AddAsync(blogPost);
-        await dbContext.SaveChangesAsync();
+        await blogPostsRepository.CreateAsync(AddBlogPost);
 
         return RedirectToPage("/Admin/Blogs/Index");
     }
