@@ -2,12 +2,24 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Index";
+    var successMessage = TempData["SuccessMessage"];
 }
-<div class=" bg-secondary bg-opacity-10 py-2">
+
+<div class="bg-secondary bg-opacity-10 py-2">
     <div class="container">
         <h2>Blog Posts</h2>
     </div>
 </div>
+
+@if (successMessage is not null)
+{
+    <div class="container p-2">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @successMessage
+            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+}
 
 <div class="mt-4">
     <div class="container">

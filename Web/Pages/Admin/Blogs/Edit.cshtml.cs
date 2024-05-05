@@ -10,6 +10,9 @@ public class EditModel(IBlogPostsRepository blogPostsRepository) : PageModel
     [BindProperty]
     public required BlogPostRow BlogPost { get; set; }
 
+    [TempData]
+    public string? SuccessMessage { get; set; }
+
     public async Task<IActionResult> OnGetAsync(Guid id)
     {
         var blogPost = await blogPostsRepository.GetByIdAsync(id);
@@ -32,6 +35,7 @@ public class EditModel(IBlogPostsRepository blogPostsRepository) : PageModel
             return RedirectToPage("/Admin/Blogs/Index");
         }
 
+        SuccessMessage = $"Blog Post [{updatedBlogPost.Unwrap().Heading}] has been updated.";
         return RedirectToPage("/Admin/Blogs/Index");
     }
 }

@@ -10,10 +10,14 @@ public class AddModel(IBlogPostsRepository blogPostsRepository) : PageModel
     [BindProperty]
     public AddBlogPost AddBlogPost { get; set; } = new();
 
+    [TempData]
+    public string? SuccessMessage { get; set; }
+
     public async Task<IActionResult> OnPostAsync()
     {
-        await blogPostsRepository.CreateAsync(AddBlogPost);
+        var created = await blogPostsRepository.CreateAsync(AddBlogPost);
 
+        SuccessMessage = $"Blog Post [{created.Heading}] has been created.";
         return RedirectToPage("/Admin/Blogs/Index");
     }
 }
