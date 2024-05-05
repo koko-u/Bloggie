@@ -13,7 +13,7 @@ public class EditModel(BloggieDbContext dbContext, IMapper mapper) : PageModel
     [BindProperty]
     public required BlogPostRow BlogPost { get; set; }
 
-    public async Task<IActionResult> OnGet(Guid id)
+    public async Task<IActionResult> OnGetAsync(Guid id)
     {
         var blogPost = await dbContext.BlogPosts.SingleOrDefaultAsync(blogPost => blogPost.Id == id);
         if (blogPost is null)
@@ -25,7 +25,7 @@ public class EditModel(BloggieDbContext dbContext, IMapper mapper) : PageModel
         return Page();
     }
 
-    public async Task<IActionResult> OnPost(Guid id)
+    public async Task<IActionResult> OnPostAsync(Guid id)
     {
         var dbBlogPost = await dbContext.BlogPosts.SingleOrDefaultAsync(blogPost => blogPost.Id == id);
         if (dbBlogPost is null)

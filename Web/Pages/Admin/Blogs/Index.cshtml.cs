@@ -12,7 +12,7 @@ public class IndexModel(BloggieDbContext dbContext, IMapper mapper) : PageModel
 {
     public List<BlogPostRow> BlogPosts { get; set; } = [];
 
-    public async Task OnGet()
+    public async Task OnGetAsync()
     {
         var blogPosts = await dbContext.BlogPosts.ToListAsync();
         BlogPosts = mapper.Map<List<BlogPost>, List<BlogPostRow>>(blogPosts);
