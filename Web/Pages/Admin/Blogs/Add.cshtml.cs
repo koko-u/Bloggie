@@ -12,7 +12,7 @@ public class AddModel(BloggieDbContext dbContext, IMapper mapper) : PageModel
     [BindProperty]
     public AddBlogPost AddBlogPost { get; set; } = new();
 
-    public async Task<IActionResult> OnPost()
+    public async Task<IActionResult> OnPostAsync()
     {
         var blogPost = new BlogPost();
         mapper.Map(AddBlogPost, blogPost);
