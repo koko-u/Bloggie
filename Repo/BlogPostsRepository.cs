@@ -3,6 +3,7 @@ using Bloggie.Db.Data;
 using Bloggie.Db.Models.Domain;
 using Bloggie.Repo.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using RustyOptions;
 
 namespace Bloggie.Repo;
 
@@ -14,15 +15,15 @@ public class BlogPostsRepository(BloggieDbContext dbContext, IMapper mapper) : I
         return mapper.Map<List<BlogPost>, List<BlogPostRow>>(blogPosts);
     }
 
-    public async Task<BlogPostRow?> GetByIdAsync(Guid id)
+    public async Task<Result<BlogPostRow, ErrorMessage>> GetByIdAsync(Guid id)
     {
         var blogPost = await dbContext.BlogPosts.SingleOrDefaultAsync(blogPost => blogPost.Id == id);
         if (blogPost is null)
         {
-            return null;
+            return Result.Err<BlogPostRow, ErrorMessage>(new ErrorMessage($"Id {id} is not found."));
         }
 
-        return mapper.Map<BlogPost, BlogPostRow>(blogPost);
+        return Result.Ok<BlogPostRow, ErrorMessage>(mapper.Map<BlogPost, BlogPostRow>(blogPost));
     }
 
     public async Task<BlogPostRow> CreateAsync(AddBlogPost addBlogPost)
@@ -36,31 +37,31 @@ public class BlogPostsRepository(BloggieDbContext dbContext, IMapper mapper) : I
         return mapper.Map<BlogPost, BlogPostRow>(blogPost);
     }
 
-    public async Task<BlogPostRow?> UpdateAsync(Guid id, BlogPostRow updateBlogPost)
+    public async Task<Result<BlogPostRow, ErrorMessage>> UpdateAsync(Guid id, BlogPostRow updateBlogPost)
     {
         var blogPost = await dbContext.BlogPosts.SingleOrDefaultAsync(blogPost => blogPost.Id == id);
         if (blogPost is null)
         {
-            return null;
+            return Result.Err<BlogPostRow, ErrorMessage>(new ErrorMessage($"Id {id} is not found."));
         }
 
         mapper.Map(updateBlogPost, blogPost);
         await dbContext.SaveChangesAsync();
 
-        return mapper.Map<BlogPost, BlogPostRow>(blogPost);
+        return Result.Ok<BlogPostRow, ErrorMessage>(mapper.Map<BlogPost, BlogPostRow>(blogPost));
     }
 
-    public async Task<BlogPostRow?> DeleteByIdAsync(Guid id)
+    public async Task<Result<BlogPostRow, ErrorMessage>> DeleteByIdAsync(Guid id)
     {
         var blogPost = await dbContext.BlogPosts.SingleOrDefaultAsync(blogPost => blogPost.Id == id);
         if (blogPost is null)
         {
-            return null;
+            return Result.Err<BlogPostRow, ErrorMessage>(new ErrorMessage($"Id {id} is not found."));
         }
 
         dbContext.BlogPosts.Remove(blogPost);
         await dbContext.SaveChangesAsync();
 
-        return mapper.Map<BlogPost, BlogPostRow>(blogPost);
+        return Result.Ok<BlogPostRow, ErrorMessage>(mapper.Map<BlogPost, BlogPostRow>(blogPost));
     }
 }

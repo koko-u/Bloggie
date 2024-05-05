@@ -19,7 +19,7 @@ public class IndexModel(IBlogPostsRepository blogPostsRepository)
     public async Task<IActionResult> OnPostDeleteAsync(Guid id)
     {
         var deletedBlogPost = await blogPostsRepository.DeleteByIdAsync(id);
-        if (deletedBlogPost is null)
+        if (deletedBlogPost.IsErr(out var errorMessage))
         {
             // TODO: add not found message.
             return RedirectToPage("/Admin/Blogs/Index");

@@ -12,6 +12,7 @@
 
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="13.0.1"/>
+        <PackageReference Include="RustyOptions" Version="0.10.1"/>
     </ItemGroup>
 
 </Project>

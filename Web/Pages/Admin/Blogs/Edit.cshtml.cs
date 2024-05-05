@@ -13,20 +13,20 @@ public class EditModel(IBlogPostsRepository blogPostsRepository) : PageModel
     public async Task<IActionResult> OnGetAsync(Guid id)
     {
         var blogPost = await blogPostsRepository.GetByIdAsync(id);
-        if (blogPost is null)
+        if (blogPost.IsErr(out var errorMessage))
         {
             // TODO: add not found message.
             return RedirectToPage("/Admin/Blogs/Index");
         }
 
-        BlogPost = blogPost;
+        BlogPost = blogPost.UnwrapOrElse(err => throw new Exception(err.Message));
         return Page();
     }
 
     public async Task<IActionResult> OnPostAsync(Guid id)
     {
         var updatedBlogPost = await blogPostsRepository.UpdateAsync(id, BlogPost);
-        if (updatedBlogPost is null)
+        if (updatedBlogPost.IsErr(out var errorMessage))
         {
             // TODO: add not found message.
             return RedirectToPage("/Admin/Blogs/Index");
