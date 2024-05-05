@@ -34,7 +34,7 @@
                                 <a class="dropdown-item" asp-page="/Admin/Blogs/Add">Add New Blog Post</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" asp-page="/Admin/Blogs/Index">List All Blog Posts</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -64,6 +64,6 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 
-@await RenderSectionAsync("Scripts", required: false)
+@await RenderSectionAsync("Scripts", false)
 </body>
 </html>
