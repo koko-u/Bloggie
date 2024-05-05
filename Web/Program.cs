@@ -1,4 +1,5 @@
 using Bloggie.Db.Data;
+using Bloggie.Web.Profiles;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,10 +9,10 @@ builder.Services.AddRazorPages();
 
 // Add DbContext
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<BloggieDbContext>(opt =>
-{
-    opt.UseSqlServer(connectionString);
-});
+builder.Services.AddDbContext<BloggieDbContext>(opt => { opt.UseSqlServer(connectionString); });
+
+// Add AutoMapper profiles
+builder.Services.AddAutoMapper(config => { config.AddProfile<BlogPostProfile>(); });
 
 var app = builder.Build();
 
@@ -20,6 +21,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
 }
+
 app.UseStaticFiles();
 
 app.UseRouting();
