@@ -17,7 +17,8 @@ public class EditModel(IBlogPostsRepository blogPostsRepository) : PageModel
         var blogPost = await blogPostsRepository.GetByIdAsync(id);
         if (blogPost.IsErr(out var errorMessage))
         {
-            // TODO: add not found message.
+            var errorNotification = Notification.Error(errorMessage.Message);
+            TempData.Set("notification", errorNotification);
             return RedirectToPage("/Admin/Blogs/Index");
         }
 
@@ -30,7 +31,8 @@ public class EditModel(IBlogPostsRepository blogPostsRepository) : PageModel
         var updatedBlogPost = await blogPostsRepository.UpdateAsync(id, BlogPost);
         if (updatedBlogPost.IsErr(out var errorMessage))
         {
-            // TODO: add not found message.
+            var errorNotification = Notification.Error(errorMessage.Message);
+            TempData.Set("notification", errorNotification);
             return RedirectToPage("/Admin/Blogs/Index");
         }
 
