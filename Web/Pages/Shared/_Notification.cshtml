@@ -1,0 +1,12 @@
+﻿@using Bloggie.Web.Models.ViewModels
+@model Notification?
+
+@if (Model is not null)
+{
+    <div class="container p-2">
+        <div class="alert @Model.NotificationType alert-dismissible fade show" role="alert">
+            @Model.Message
+            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+}

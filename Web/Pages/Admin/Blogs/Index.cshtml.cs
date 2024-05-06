@@ -1,5 +1,7 @@
 using Bloggie.Repo;
 using Bloggie.Repo.Models.ViewModels;
+using Bloggie.Web.Extensions;
+using Bloggie.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -21,10 +23,13 @@ public class IndexModel(IBlogPostsRepository blogPostsRepository)
         var deletedBlogPost = await blogPostsRepository.DeleteByIdAsync(id);
         if (deletedBlogPost.IsErr(out var errorMessage))
         {
-            // TODO: add not found message.
+            var errorNotification = Notification.Error(errorMessage.Message);
+            TempData.Set("notification", errorNotification);
             return RedirectToPage("/Admin/Blogs/Index");
         }
 
+        var notification = Notification.Info($"Blog Post [{deletedBlogPost.Unwrap().Heading}] has been deleted.");
+        TempData.Set(nameof(notification), notification);
         return RedirectToPage("/Admin/Blogs/Index");
     }
 }
