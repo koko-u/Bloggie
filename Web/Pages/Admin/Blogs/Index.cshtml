@@ -1,8 +1,11 @@
 ﻿@page
+@using Bloggie.Web.Extensions
+@using Bloggie.Web.Models.ViewModels
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model IndexModel
 @{
     ViewData["Title"] = "Index";
-    var successMessage = TempData["SuccessMessage"];
+    var notification = TempData.Get<Notification>("notification");
 }
 
 <div class="bg-secondary bg-opacity-10 py-2">
@@ -11,15 +14,20 @@
     </div>
 </div>
 
-@if (successMessage is not null)
+@*
+@if (notification is not null)
 {
     <div class="container p-2">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            @successMessage
+        <div class="alert @notification.NotificationType.BsClass() alert-dismissible fade show" role="alert">
+            @notification.Message
             <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
 }
+*@
+
+<partial name="Shared/_Notification" model="@notification"/>
+
 
 <div class="mt-4">
     <div class="container">
