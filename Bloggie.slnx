@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/Web/">
+    <Project Path="Web/Bloggie.Web.csproj" />
+  </Folder>
+</Solution>
