@@ -1,3 +1,4 @@
+using AutoRegisterAnnotation;
 using Bloggie.Web.ServiceCollectionExtensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,9 @@ builder.Services.AddRazorPages();
 
 // Add NpgsqlDataSource
 builder.Services.AddNpgsqlDataSource(builder.Configuration);
+
+// Add Auto Register Services
+builder.Services.AddAutoRegisterServices<Program>();
 
 var app = builder.Build();
 

@@ -2,6 +2,7 @@
 CREATE TABLE IF NOT EXISTS "blog_posts"
 (
     "id"                 UUID          NOT NULL DEFAULT "uuidv7"(),
+    "heading"            VARCHAR(255)  NOT NULL,
     "page_title"         VARCHAR(255)  NOT NULL,
     "content"            TEXT          NULL     DEFAULT NULL,
     "short_description"  VARCHAR(255)  NULL     DEFAULT NULL,
@@ -15,6 +16,8 @@ CREATE TABLE IF NOT EXISTS "blog_posts"
     CONSTRAINT "blog_posts_pkey" PRIMARY KEY ("id")
 );
 
+CREATE INDEX IF NOT EXISTS "idx_blog_posts_heading" ON "blog_posts" ("heading");
+CREATE INDEX IF NOT EXISTS "idx_blog_posts_heading_like" ON "blog_posts" USING "gin" ("heading" "gin_trgm_ops");
 CREATE INDEX IF NOT EXISTS "idx_blog_posts_title" ON "blog_posts" ("page_title");
 CREATE INDEX IF NOT EXISTS "idx_blog_posts_title_like" ON "blog_posts" USING "gin" ("page_title" "gin_trgm_ops");
 CREATE INDEX IF NOT EXISTS "idx_blog_posts_visible" ON "blog_posts" ("visible");

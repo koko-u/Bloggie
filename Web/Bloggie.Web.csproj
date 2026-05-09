@@ -3,6 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,11 +12,13 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" />
+    <PackageReference Include="kozLibraries.AutoRegisterAnnotation" />
     <PackageReference Include="Npgsql" />
     <PackageReference Include="Npgsql.DependencyInjection" />
+    <PackageReference Include="Riok.Mapperly" ExcludeAssets="runtime" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\libs\KozLibraries\src\AutoRegisterAnnotation\AutoRegisterAnnotation.csproj" />
+    <None Include="Sql/**/*.sql" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
