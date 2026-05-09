@@ -9,3 +9,8 @@ watch:
   
 fmt:
   dotnet csharpier format .
+  
+upsubtree:
+    git subtree pull --prefix=libs/KozLibraries git@github.com:koko-u/KozLibraries.git main --squash
+    jj git import
+    dotnet build
