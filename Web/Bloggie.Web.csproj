@@ -14,4 +14,8 @@
     <PackageReference Include="Npgsql" />
     <PackageReference Include="Npgsql.DependencyInjection" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\libs\KozLibraries\src\AutoRegisterAnnotation\AutoRegisterAnnotation.csproj" />
+  </ItemGroup>
 </Project>

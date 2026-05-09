@@ -2,4 +2,5 @@
   <Folder Name="/Web/">
     <Project Path="Web/Bloggie.Web.csproj" />
   </Folder>
+  <Project Path="libs/KozLibraries/src/AutoRegisterAnnotation/AutoRegisterAnnotation.csproj" />
 </Solution>
