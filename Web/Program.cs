@@ -1,5 +1,7 @@
+using System;
 using AutoRegisterAnnotation;
 using Bloggie.Web.ServiceCollectionExtensions;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,7 +15,15 @@ builder.Services.AddRazorPages();
 builder.Services.AddNpgsqlDataSource(builder.Configuration);
 
 // Add Auto Register Services
-builder.Services.AddAutoRegisterServices<Program>();
+builder.Services.AddAutoRegisterServices<Program>(
+    (srvType, lifetime) =>
+    {
+        Console.WriteLine($"Registering service: {srvType.Name} with lifetime: {lifetime}");
+    }
+);
+
+// Add Fluent Validations
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 var app = builder.Build();
 

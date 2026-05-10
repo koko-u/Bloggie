@@ -12,6 +12,10 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" />
+    <PackageReference Include="FastCloner" />
+    <PackageReference Include="FastCloner.SourceGenerator" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="kozLibraries.AutoRegisterAnnotation" />
     <PackageReference Include="kozLibraries.TagHelpers" />
     <PackageReference Include="Npgsql" />

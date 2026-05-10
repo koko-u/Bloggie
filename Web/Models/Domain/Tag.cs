@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using FastCloner.SourceGenerator.Shared;
 
 namespace Bloggie.Web.Models.Domain;
 
 /// <summary>
 /// Blog Tag
 /// </summary>
+[FastClonerClonable]
 public sealed class Tag
 {
     /// <summary>

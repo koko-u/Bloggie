@@ -29,8 +29,20 @@
           <li class="nav-item">
             <a class="nav-link" asp-area="" asp-page="/Index" active-when-page>Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-page="/Privacy" active-when-page>Privacy</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" 
+               active-when-prefix="/Admin"
+               role="button" 
+               data-bs-toggle="dropdown" 
+               aria-expanded="false">
+              Admin
+            </a>
+            <ul class="dropdown-menu bg-primary">
+              <li><a class="dropdown-item" asp-page="/Admin/Blogs/Add">Add Blog Post</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </li>
         </ul>
       </div>
