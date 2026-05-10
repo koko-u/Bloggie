@@ -58,6 +58,18 @@
         "dist/jquery.validate.unobtrusive.js",
         "dist/jquery.validate.unobtrusive.min.js"
       ]
+    },
+    {
+      "library": "bootswatch@5.3.8",
+      "destination": "wwwroot/lib/bootswatch",
+      "files": [
+        "LICENSE",
+        "package.json",
+        "README.md",
+        "dist/flatly/bootstrap.css",
+        "dist/flatly/bootstrap.min.css",
+        "dist/flatly/bootstrap.min.css.map"
+      ]
     }
   ]
 }
