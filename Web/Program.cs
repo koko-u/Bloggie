@@ -1,7 +1,9 @@
 using System;
+using System.Globalization;
 using AutoRegisterAnnotation;
 using Bloggie.Web.ServiceCollectionExtensions;
 using FluentValidation;
+using KozLibraries.JsonMessages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,6 +24,9 @@ builder.Services.AddAutoRegisterServices<Program>(
     }
 );
 
+// Configure Json Message Resources
+builder.Services.ConfigureRequestLocalization(() => [new CultureInfo("en"), new CultureInfo("ja")]);
+
 // Add Fluent Validations
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
@@ -34,6 +39,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseRequestLocalization();
 
 app.UseHttpsRedirection();
 

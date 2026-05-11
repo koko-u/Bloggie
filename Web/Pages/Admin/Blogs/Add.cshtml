@@ -10,7 +10,9 @@
 <div class="w-75 mx-auto">
   <form method="post">
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.Heading"></label>
+      <label class="col-sm-2 col-form-label" asp-for="Blog.Heading">
+        @Messages.Get("BlogPost.Heading")
+      </label>
       <div class="col-sm-10">
         <input type="email" class="form-control" asp-for="Blog.Heading" bs-valid>
         <span asp-validation-for="Blog.Heading" bs-feedback></span>
@@ -18,7 +20,9 @@
     </div>
 
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.PageTitle"></label>
+      <label class="col-sm-2 col-form-label" asp-for="Blog.PageTitle">
+        @Messages.Get("BlogPost.PageTitle")
+      </label>
       <div class="col-sm-10">
         <input type="text" class="form-control" asp-for="Blog.PageTitle" bs-valid>
         <span asp-validation-for="Blog.PageTitle" bs-feedback></span>
@@ -26,7 +30,9 @@
     </div>
 
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.Slug"></label>
+      <label class="col-sm-2 col-form-label" asp-for="Blog.Slug">
+        @Messages.Get("BlogPost.Slug")
+      </label>
       <div class="col-sm-10">
         <input type="text" class="form-control" asp-for="Blog.Slug" bs-valid>
         <span asp-validation-for="Blog.Slug" bs-feedback></span>
@@ -34,7 +40,9 @@
     </div>
 
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.Content"></label>
+      <label class="col-sm-2 col-form-label" asp-for="Blog.Content">
+        @Messages.Get("BlogPost.Content")
+      </label>
       <div class="col-sm-10">
         <textarea class="form-control" row="3" asp-for="Blog.Content" bs-valid></textarea>
         <span asp-validation-for="Blog.Content" bs-feedback></span>
@@ -42,7 +50,9 @@
     </div>
 
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.ShortDescription"></label>
+      <label class="col-sm-2 col-form-label" asp-for="Blog.ShortDescription">
+        @Messages.Get("BlogPost.ShortDescription")
+      </label>
       <div class="col-sm-10">
         <input type="text" class="form-control" asp-for="Blog.ShortDescription" bs-valid>
         <span asp-validation-for="Blog.ShortDescription" bs-feedback></span>
@@ -50,7 +60,9 @@
     </div>
 
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.FeaturedImageUrl"></label>
+      <label class="col-sm-2 col-form-label" asp-for="Blog.FeaturedImageUrl">
+        @Messages.Get("BlogPost.FeaturedImageUrl")
+      </label>
       <div class="col-sm-10">
         <input type="text" class="form-control" asp-for="Blog.FeaturedImageUrl" bs-valid>
         <span asp-validation-for="Blog.FeaturedImageUrl" bs-feedback></span>
@@ -58,7 +70,9 @@
     </div>
 
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.PublishedDate"></label>
+      <label class="col-sm-2 col-form-label" asp-for="Blog.PublishedDate">
+        @Messages.Get("BlogPost.PublishedDate")
+      </label>
       <div class="col-sm-10">
         <input type="date" class="form-control" asp-for="Blog.PublishedDate" bs-valid>
         <span asp-validation-for="Blog.PublishedDate" bs-feedback></span>
@@ -66,7 +80,9 @@
     </div>
 
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.Author"></label>
+      <label class="col-sm-2 col-form-label" asp-for="Blog.Author">
+        @Messages.Get("BlogPost.Author")
+      </label>
       <div class="col-sm-10">
         <input type="text" class="form-control" asp-for="Blog.Author" bs-valid>
         <span asp-validation-for="Blog.Author" bs-feedback></span>
@@ -77,7 +93,9 @@
       <div class="col-sm-10 offset-sm-2">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" asp-for="Blog.Visible" bs-valid>
-          <label class="form-check-label" asp-for="Blog.Visible"></label>
+          <label class="form-check-label" asp-for="Blog.Visible">
+            @Messages.Get("BlogPost.Visible")
+          </label>
         </div>
         <span asp-validation-for="Blog.Visible" bs-feedback></span>
       </div>
@@ -85,7 +103,9 @@
 
     <div class="row mb-3">
       <div class="col-sm-10 offset-sm-2">
-        <button type="submit" class="btn btn-outline-primary">Add Blog Post</button>
+        <button type="submit" class="btn btn-outline-primary">
+          @Messages.Get("BlogPost.Add")
+        </button>
       </div>
     </div>
 

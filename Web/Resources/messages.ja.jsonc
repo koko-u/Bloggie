@@ -1,0 +1,20 @@
+{
+  // Validation Messages
+  "Validation.Required": "{PropertyName} は必須です",
+  "Validation.MaximumLength": "{PropertyName} は {MaxLength} 文字以内で入力してください",
+  "Validation.Unique": "{PropertyName} は一意である必要があります",
+  "Validation.PastDate": "{PropertyName} は過去の日付である必要があります",
+  // Model Properties
+  "BlogPost.Heading": "ヘッダ",
+  "BlogPost.PageTitle": "タイトル",
+  "BlogPost.Content": "本文",
+  "BlogPost.ShortDescription": "短文の説明",
+  "BlogPost.FeaturedImageUrl": "注目の画像",
+  "BlogPost.Slug": "Slug",
+  "BlogPost.PublishedDate": "発行日",
+  "BlogPost.Author": "著者",
+  "BlogPost.Visible": "表示有無",
+  "Tag.Name": "名前",
+  // UI Labels
+  "BlogPost.Add": "ブログを登録する"
+}

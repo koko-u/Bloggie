@@ -16,8 +16,9 @@
     <PackageReference Include="FastCloner.SourceGenerator" />
     <PackageReference Include="FluentValidation" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
-    <PackageReference Include="kozLibraries.AutoRegisterAnnotation" />
-    <PackageReference Include="kozLibraries.TagHelpers" />
+    <PackageReference Include="KozLibraries.AutoRegisterAnnotation" />
+    <PackageReference Include="KozLibraries.JsonMessages" />
+    <PackageReference Include="KozLibraries.TagHelpers" />
     <PackageReference Include="Npgsql" />
     <PackageReference Include="Npgsql.DependencyInjection" />
     <PackageReference Include="Riok.Mapperly" ExcludeAssets="runtime" PrivateAssets="all" />

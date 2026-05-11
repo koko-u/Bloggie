@@ -1,0 +1,20 @@
+{
+  // Validation Messages
+  "Validation.Required": "{PropertyName} is required",
+  "Validation.MaximumLength": "{PropertyName} must be {MaxLength} characters or fewer",
+  "Validation.Unique": "{PropertyName} must be unique",
+  "Validation.PastDate": "{PropertyName} must be a past date",
+  // Model Properties
+  "BlogPost.Heading": "Heading",
+  "BlogPost.PageTitle": "Page Title",
+  "BlogPost.Content": "Content",
+  "BlogPost.ShortDescription": "Short Description",
+  "BlogPost.FeaturedImageUrl": "Featured Image",
+  "BlogPost.Slug": "Slug",
+  "BlogPost.PublishedDate": "Published Date",
+  "BlogPost.Author": "Author",
+  "BlogPost.Visible": "Is Visible",
+  "Tag.Name": "Name",
+  // UI Labels
+  "BlogPost.Add": "Add Blog Post"
+}
