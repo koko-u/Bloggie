@@ -4,7 +4,7 @@ using Riok.Mapperly.Abstractions;
 
 namespace Bloggie.Web.Mappings;
 
-[Mapper(AllowNullPropertyAssignment = false, ThrowOnPropertyMappingNullMismatch = true)]
+[Mapper(ThrowOnPropertyMappingNullMismatch = true)]
 public static partial class BlogPostExtension
 {
     [MapperIgnoreSource(nameof(BlogPostRow.TagId))]

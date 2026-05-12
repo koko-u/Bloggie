@@ -17,6 +17,7 @@
     <PackageReference Include="FluentValidation" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="KozLibraries.AutoRegisterAnnotation" />
+    <PackageReference Include="kozlibraries.DapperDateOnlySupport" />
     <PackageReference Include="KozLibraries.JsonMessages" />
     <PackageReference Include="KozLibraries.TagHelpers" />
     <PackageReference Include="Npgsql" />

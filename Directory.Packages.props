@@ -1,16 +1,23 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <KozLibrariesVersion>0.17.0</KozLibrariesVersion>
+    <KozLibrariesVersion>0.22.0</KozLibrariesVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Dapper" Version="2.1.72" />
-    <PackageVersion Include="KozLibraries.AutoRegisterAnnotation" Version="$(KozLibrariesVersion)" />
+    <PackageVersion
+      Include="KozLibraries.AutoRegisterAnnotation"
+      Version="$(KozLibrariesVersion)"
+    />
     <PackageVersion Include="KozLibraries.JsonMessages" Version="$(KozLibrariesVersion)" />
     <PackageVersion Include="KozLibraries.TagHelpers" Version="$(KozLibrariesVersion)" />
+    <PackageVersion Include="KozLibraries.DapperDateOnlySupport" Version="$(KozLibrariesVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.0.7" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.7" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.7" />
+    <PackageVersion
+      Include="Microsoft.Extensions.Configuration.EnvironmentVariables"
+      Version="10.0.7"
+    />
     <PackageVersion Include="Serilog" Version="4.3.1" />
     <PackageVersion Include="Serilog.AspNetCore" Version="10.0.0" />
     <PackageVersion Include="Serilog.Settings.Configuration" Version="10.0.0" />

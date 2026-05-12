@@ -3,12 +3,17 @@ using System.Globalization;
 using AutoRegisterAnnotation;
 using Bloggie.Web.ServiceCollectionExtensions;
 using FluentValidation;
+using KozLibraries.DapperDateOnlySupport;
 using KozLibraries.JsonMessages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Dapper DateOnly Handler
+Dapper.SqlMapper.AddTypeHandler(new DateOnlyHandler());
+Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
 
 // Add services to the container.
 builder.Services.AddRazorPages();
