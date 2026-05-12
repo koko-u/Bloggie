@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using Bloggie.Web.FlashMessages
+@{
+  FlashMessage? flashMessage = null;
+  if (TempData.ContainsKey(FlashMessage.Key) && TempData[FlashMessage.Key] is string message)
+  {
+    flashMessage = FlashMessage.FromJsonString(message);
+  }
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -60,6 +70,50 @@
     &copy; 2026 - Bloggie.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
   </div>
 </footer>
+
+@* Flash Message *@
+@if (flashMessage.HasValue)
+{
+  
+  var bootstrapClass = flashMessage.Value.Level switch
+  {
+    var v when v == FlashMessageLevel.Success => "text-bg-success",
+    var v when v == FlashMessageLevel.Info => "text-bg-info",
+    var v when v == FlashMessageLevel.Warning => "text-bg-warning",
+    var v when v == FlashMessageLevel.Error  => "text-bg-danger",
+    _ => "text-bg-primary"
+  };
+
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="flashToast"
+         class="toast @bootstrapClass"
+         role="alert"
+         aria-live="assertive"
+         aria-atomic="true"
+         data-bs-delay="4000">
+      <div class="toast-header">
+        <strong class="me-auto">Notify</strong>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        @flashMessage.Value.Message
+      </div>
+    </div>
+  </div>
+
+  <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const element = document.getElementById("flashToast");
+            if (element) {
+                const toast = new bootstrap.Toast(element);
+                toast.show();
+            }
+        });
+    </script>
+}
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

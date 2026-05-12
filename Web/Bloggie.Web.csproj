@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ardalis.SmartEnum" />
+    <PackageReference Include="Ardalis.SmartEnum.Dapper" />
+    <PackageReference Include="Ardalis.SmartEnum.SystemTextJson" />
+    <PackageReference Include="Ardalis.SmartEnum.ModelBinding" />
     <PackageReference Include="Dapper" />
     <PackageReference Include="FastCloner" />
     <PackageReference Include="FastCloner.SourceGenerator" />

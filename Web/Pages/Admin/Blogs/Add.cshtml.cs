@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Bloggie.Web.Extensions;
+using Bloggie.Web.FlashMessages;
 using Bloggie.Web.Models.Forms;
 using Bloggie.Web.Services;
 using FluentValidation;
@@ -49,6 +50,10 @@ public sealed class Add(BlogPostsService blogPostsService) : PageModel
         }
 
         var blogPost = await blogPostsService.CreateAsync(this.Blog, cancellationToken);
+        var successMessage = FlashMessage.Success(
+            $"Blog post '{blogPost.Heading}' created successfully"
+        );
+        TempData[FlashMessage.Key] = successMessage.ToJsonString();
 
         return RedirectToPage("/Index");
     }
