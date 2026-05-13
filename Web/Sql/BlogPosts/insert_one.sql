@@ -16,15 +16,4 @@ VALUES (@Heading,
         @PublishedDate,
         @Author,
         @Visible)
-RETURNING "id",
-    "heading",
-    "page_title",
-    "content",
-    "short_description",
-    "featured_image_url",
-    "slug",
-    "published_date",
-    "author",
-    "visible",
-    NULL AS "tag_id",
-    NULL AS "tag_name";
+RETURNING "id";

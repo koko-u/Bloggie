@@ -3,10 +3,15 @@ using System;
 namespace Bloggie.Web.Models.Forms;
 
 /// <summary>
-/// Create new blog post form
+/// Edit the blog post form
 /// </summary>
-public sealed class AddBlogForm
+public sealed class EditBlogForm
 {
+    /// <summary>
+    /// Blog post Id for editing
+    /// </summary>
+    public required Guid Id { get; set; }
+
     /// <summary>
     /// Blog Heading title
     /// </summary>

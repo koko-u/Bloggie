@@ -6,16 +6,16 @@ using KozLibraries.JsonMessages;
 namespace Bloggie.Web.Models.Forms;
 
 /// <summary>
-/// Validator for new BlogForm Data
+/// Validator for Edit BlogForm Data
 /// </summary>
-public sealed class AddBlogFormValidator : AbstractValidator<AddBlogForm>
+public sealed class EditBlogFormValidator : AbstractValidator<EditBlogForm>
 {
     /// <summary>
-    /// Define validation rules for Add or Edit BlogForm
+    /// Define validation rules for Edit BlogForm
     /// </summary>
     /// <param name="blogPostsService"></param>
     /// <param name="messages"></param>
-    public AddBlogFormValidator(BlogPostsService blogPostsService, JsonMessageLocalizer messages)
+    public EditBlogFormValidator(BlogPostsService blogPostsService, JsonMessageLocalizer messages)
     {
         RuleFor(form => form.Heading)
             .NotEmpty()
@@ -76,30 +76,23 @@ public sealed class AddBlogFormValidator : AbstractValidator<AddBlogForm>
             );
 
         RuleFor(form => form.Slug)
-            .NotEmpty()
-            .WithMessage(_ =>
-                messages.Format(
-                    "Validation.Required",
-                    new { PropertyName = messages.Get("BlogPost.Slug") }
-                )
-            )
-            .MaximumLength(255)
-            .WithMessage(_ =>
-                messages.Format(
-                    "Validation.MaximumLength",
-                    new { PropertyName = messages.Get("BlogPost.Slug"), MaxLength = 255 }
-                )
-            )
             .MustAsync(
-                async (slug, cancellationToken) =>
+                async (form, slug, cancellationToken) =>
                 {
-                    var blogPost = await blogPostsService.GetBySlugAsync(slug, cancellationToken);
-                    return blogPost is null;
+                    var oldData = await blogPostsService.GetByIdAsync(form.Id, cancellationToken);
+                    if (oldData is null)
+                    {
+                        // no blog post found, skip validation
+                        return true;
+                    }
+
+                    // slug value cannot change
+                    return string.Equals(oldData.Slug, slug, StringComparison.OrdinalIgnoreCase);
                 }
             )
             .WithMessage(_ =>
                 messages.Format(
-                    "Validation.Unique",
+                    "Validation.SlugCannotChange",
                     new { PropertyName = messages.Get("BlogPost.Slug") }
                 )
             );
@@ -111,7 +104,28 @@ public sealed class AddBlogFormValidator : AbstractValidator<AddBlogForm>
                     "Validation.PastDate",
                     new { PropertyName = messages.Get("BlogPost.PublishedDate") }
                 )
-            );
+            )
+            .MustAsync(
+                async (form, publishedDate, cancellationToken) =>
+                {
+                    var oldData = await blogPostsService.GetByIdAsync(form.Id, cancellationToken);
+                    if (oldData is null)
+                    {
+                        // no blog post found, skip validation
+                        return true;
+                    }
+
+                    if (!oldData.PublishedDate.HasValue)
+                    {
+                        // old value has not published, allow change
+                        return true;
+                    }
+
+                    // if already published, do not allow change
+                    return publishedDate == oldData.PublishedDate;
+                }
+            )
+            .WithMessage(_ => messages.Get("Validation.DoublePublished"));
 
         RuleFor(form => form.Author)
             .NotEmpty()
