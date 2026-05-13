@@ -16,6 +16,7 @@
   <title>@ViewData["Title"] - Bloggie.Web</title>
   <script type="importmap"></script>
   <link rel="stylesheet" href="~/lib/bootswatch/dist/flatly/bootstrap.min.css"/>
+  <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css"/>
   <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
   <link rel="stylesheet" href="~/Bloggie.Web.styles.css" asp-append-version="true"/>
 </head>
@@ -49,7 +50,7 @@
             </a>
             <ul class="dropdown-menu bg-primary">
               <li><a class="dropdown-item" asp-page="/Admin/Blogs/Add">Add Blog Post</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" asp-page="/Admin/Blogs/List">List Blogs</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>

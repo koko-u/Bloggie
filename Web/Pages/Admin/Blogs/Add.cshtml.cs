@@ -55,6 +55,6 @@ public sealed class Add(BlogPostsService blogPostsService) : PageModel
         );
         TempData[FlashMessage.Key] = successMessage.ToJsonString();
 
-        return RedirectToPage("/Index");
+        return RedirectToPage("/Admin/Blogs/List");
     }
 }

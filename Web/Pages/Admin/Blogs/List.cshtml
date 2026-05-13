@@ -1,0 +1,65 @@
+@page
+@model Bloggie.Web.Pages.Admin.Blogs.List
+
+@{
+  ViewData["Title"] = "Blog Posts";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-5">
+  <h1 class="h3 mb-0">Blog Posts</h1>
+
+  <a asp-page="/Admin/Blogs/Add" class="btn btn-primary d-flex align-items-center justify-content-around">
+    <i class="bi bi-plus-circle"></i>
+    <div class="ms-1">Add Blog Post</div>
+  </a>
+</div>
+
+@if (Model.BlogPosts.Count == 0)
+{
+  <div class="alert alert-info">
+    Blog Posts are not there.
+  </div>
+}
+else
+{
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+      <thead>
+      <tr>
+        <th>@Messages.Get("BlogPost.Heading")</th>
+        <th>@Messages.Get("BlogPost.ShortDescription")</th>
+        <th>@Messages.Get("BlogPost.PublishedDate")</th>
+        <th>@Messages.Get("BlogPost.Author")</th>
+        <th>@Messages.Get("BlogPost.Visible")</th>
+        <th class="text-end">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      @foreach (var blog in Model.BlogPosts)
+      {
+        <tr>
+          <td class="fw-semibold">@blog.Heading</td>
+          <td>@blog.ShortDescription</td>
+          <td class="text-nowrap">@blog.PublishedDate?.ToString("yyyy-MM-dd")</td>
+          <td class="text-nowrap">@blog.Author</td>
+          <td>
+            @if (blog.Visible)
+            {
+              <span class="badge text-bg-success">Visible</span>
+            }
+            else
+            {
+              <span class="badge text-bg-secondary">Hidden</span>
+            }
+          </td>
+          <td class="text-end text-nowrap">
+            <a asp-page="/Admin/Blogs/Edit" asp-route-id="@blog.Id" class="btn btn-sm btn-primary">
+              Edit
+            </a>
+          </td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  </div>
+}
