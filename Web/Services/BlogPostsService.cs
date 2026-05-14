@@ -206,4 +206,35 @@ public sealed class BlogPostsService(NpgsqlDataSource dataSource)
         // GROUPING BlogPost data
         return rows.GroupByBlogPost().SingleOrDefault();
     }
+
+    /// <summary>
+    /// Delete Blog Post by Id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<BlogPost?> DeleteAsync(Guid id, CancellationToken cancellationToken)
+    {
+        var deleteQuery = await File.ReadAllTextAsync(
+            "Sql/BlogPosts/delete_by_id.sql",
+            cancellationToken
+        );
+
+        await using var conn = await dataSource.OpenConnectionAsync(cancellationToken);
+        await using var tx = await conn.BeginTransactionAsync(cancellationToken);
+
+        // DELETE ROW
+        var deleteCmd = new CommandDefinition(
+            commandText: deleteQuery,
+            parameters: new { Id = id },
+            transaction: tx,
+            cancellationToken: cancellationToken
+        );
+        var rows = await conn.QuerySingleOrDefaultAsync<BlogPostRow>(deleteCmd);
+
+        await tx.CommitAsync(cancellationToken);
+
+        // GROUPING BlogPost data
+        return rows?.ToBlogPostModel();
+    }
 }
