@@ -5,6 +5,32 @@
   ViewData["Title"] = "Edit Blog Post";
 }
 
+@section Styles
+{
+  <link rel="stylesheet" href="https://uicdn.toast.com/editor/3.2.2/toastui-editor.min.css" />
+}
+@section Scripts
+{
+  <script src="https://uicdn.toast.com/editor/3.2.2/toastui-editor-all.min.js"></script>
+  <script src="~/js/blog-image-toast.js" type="module" asp-append-version="true"></script>
+  <script type="module">
+    import { createToastEditor, uploadedImageIds, createImageIdInput } from '/js/blog-image-toast.js'
+    
+    const textarea = document.querySelector('[name="Blog.ContentMarkdown"]');
+    const editor = createToastEditor('#editor', textarea);
+
+    document.querySelector('form').addEventListener('submit', () => {
+      // insert image ids to backend input area
+      const uploadedImageIdsDiv = document.getElementById('uploaded-image-ids');
+      uploadedImageIdsDiv.innerHTML = "";
+      uploadedImageIds.forEach(id => uploadedImageIdsDiv.appendChild(createImageIdInput(id, 'Blog')));
+
+      textarea.value = editor.getMarkdown();
+    });
+</script>
+}
+
+
 <h3 class="text-center pb-5">Edit Blog Post</h3>
 
 <div class="w-75 mx-auto">
@@ -41,12 +67,14 @@
     </div>
 
     <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.Content">
+      <label class="col-sm-2 col-form-label" asp-for="Blog.ContentMarkdown">
         @Messages.Get("BlogPost.Content")
       </label>
       <div class="col-sm-10">
-        <textarea class="form-control" row="3" asp-for="Blog.Content" bs-valid></textarea>
-        <span asp-validation-for="Blog.Content" bs-feedback></span>
+        <div id="editor"></div>
+        <div id="uploaded-image-ids"></div>
+        <textarea class="form-control" row="3" asp-for="Blog.ContentMarkdown" bs-valid hidden></textarea>
+        <span asp-validation-for="Blog.ContentMarkdown" bs-feedback></span>
       </div>
     </div>
 
@@ -57,16 +85,6 @@
       <div class="col-sm-10">
         <input type="text" class="form-control" asp-for="Blog.ShortDescription" bs-valid>
         <span asp-validation-for="Blog.ShortDescription" bs-feedback></span>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <label class="col-sm-2 col-form-label" asp-for="Blog.FeaturedImageUrl">
-        @Messages.Get("BlogPost.FeaturedImageUrl")
-      </label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" asp-for="Blog.FeaturedImageUrl" bs-valid>
-        <span asp-validation-for="Blog.FeaturedImageUrl" bs-feedback></span>
       </div>
     </div>
 

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\lib\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Ardalis.SmartEnum" />
     <PackageReference Include="Ardalis.SmartEnum.Dapper" />
     <PackageReference Include="Ardalis.SmartEnum.SystemTextJson" />
@@ -24,6 +20,7 @@
     <PackageReference Include="kozlibraries.DapperDateOnlySupport" />
     <PackageReference Include="KozLibraries.JsonMessages" />
     <PackageReference Include="KozLibraries.TagHelpers" />
+    <PackageReference Include="Markdig" />
     <PackageReference Include="Npgsql" />
     <PackageReference Include="Npgsql.DependencyInjection" />
     <PackageReference Include="Riok.Mapperly" ExcludeAssets="runtime" PrivateAssets="all" />

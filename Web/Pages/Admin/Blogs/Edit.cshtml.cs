@@ -26,6 +26,7 @@ public class Edit(BlogPostsService blogPostsService) : PageModel
             return RedirectToPage("/Admin/Blogs/List");
         }
 
+        // Content value is Raw markdown content
         Blog = blogPost.ToEditBlogForm();
         return Page();
     }

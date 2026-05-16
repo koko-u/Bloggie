@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Bloggie.Web.Models.Forms;
 
@@ -18,19 +19,19 @@ public sealed class AddBlogForm
     public string? PageTitle { get; set; }
 
     /// <summary>
-    /// Blog Content
+    /// Blog Content ( Markdown format )
     /// </summary>
-    public string? Content { get; set; }
+    public string? ContentMarkdown { get; set; }
+
+    /// <summary>
+    /// Uploaded image ids
+    /// </summary>
+    public List<Guid> ImageIds { get; set; } = [];
 
     /// <summary>
     /// Blog Short Description
     /// </summary>
     public string? ShortDescription { get; set; }
-
-    /// <summary>
-    /// Blog Featured Image URL
-    /// </summary>
-    public string? FeaturedImageUrl { get; set; }
 
     /// <summary>
     /// Slug for the blog post URL

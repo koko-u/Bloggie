@@ -5,7 +5,8 @@ SELECT "T"."id",
        "BP"."page_title"         AS "blog_post_title",
        "BP"."content"            AS "blog_post_content",
        "BP"."short_description"  AS "blog_post_short_description",
-       "BP"."featured_image_url" AS "blog_post_featured_image_url",
+       "I"."id"                  AS "blog_post_image_id",
+       "I"."url"                 AS "blog_post_image_url",
        "BP"."slug"               AS "blog_post_slug",
        "BP"."published_date"     AS "blog_post_published_date",
        "BP"."author"             AS "blog_post_author",
@@ -16,4 +17,7 @@ FROM "tags" AS "T"
      ON "T"."id" = "BPT"."tag_id"
          LEFT OUTER JOIN
      "blog_posts" AS "BP"
-     ON "BPT"."blog_post_id" = "BP"."id";
+     ON "BPT"."blog_post_id" = "BP"."id"
+         LEFT OUTER JOIN
+     "images" AS "I"
+     ON "I"."blog_post_id" = "BP"."id";

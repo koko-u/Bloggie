@@ -29,5 +29,6 @@
     <PackageVersion Include="Ardalis.SmartEnum.ModelBinding" Version="8.2.0" />
     <PackageVersion Include="FastCloner" Version="3.5.4" />
     <PackageVersion Include="FastCloner.SourceGenerator" Version="1.2.0" />
+    <PackageVersion Include="Markdig" Version="1.2.0"/>
   </ItemGroup>
 </Project>

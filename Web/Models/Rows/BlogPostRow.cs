@@ -14,7 +14,9 @@ public sealed class BlogPostRow
 
     public string? ShortDescription { get; set; }
 
-    public string? FeaturedImageUrl { get; set; }
+    public Guid? ImageId { get; set; }
+
+    public string? ImageUrl { get; set; }
 
     public required string Slug { get; set; }
 

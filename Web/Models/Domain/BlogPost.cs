@@ -36,9 +36,9 @@ public sealed class BlogPost
     public string? ShortDescription { get; set; }
 
     /// <summary>
-    /// Blog Featured Image URL
+    /// Blog Featured Image URLs
     /// </summary>
-    public string? FeaturedImageUrl { get; set; }
+    public List<Image> Images { get; set; } = [];
 
     /// <summary>
     /// Slug for the blog post URL

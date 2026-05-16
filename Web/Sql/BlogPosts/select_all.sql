@@ -3,13 +3,14 @@ SELECT "BP"."id",
        "BP"."page_title",
        "BP"."content",
        "BP"."short_description",
-       "BP"."featured_image_url",
+       "I"."id"   AS "image_id",
+       "I"."url"  AS "image_url",
        "BP"."slug",
        "BP"."published_date",
        "BP"."author",
        "BP"."visible",
        "T"."id"   AS "tag_id",
-       "T"."name" AS "tag_name"    
+       "T"."name" AS "tag_name"
 FROM "blog_posts" AS "BP"
          LEFT OUTER JOIN
      "blog_post_tags" AS "BPT"
@@ -17,4 +18,7 @@ FROM "blog_posts" AS "BP"
          LEFT OUTER JOIN
      "tags" AS "T"
      ON "BPT"."tag_id" = "T"."id"
+         LEFT OUTER JOIN
+     "images" AS "I"
+     ON "I"."blog_post_id" = "BP"."id"
 

@@ -62,19 +62,6 @@ public sealed class AddBlogFormValidator : AbstractValidator<AddBlogForm>
                 )
             );
 
-        RuleFor(form => form.FeaturedImageUrl)
-            .MaximumLength(255)
-            .WithMessage(_ =>
-                messages.Format(
-                    "Validation.MaximumLength",
-                    new
-                    {
-                        PropertyName = messages.Get("BlogPost.FeaturedImageUrl"),
-                        MaxLength = 255,
-                    }
-                )
-            );
-
         RuleFor(form => form.Slug)
             .NotEmpty()
             .WithMessage(_ =>

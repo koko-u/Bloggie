@@ -7,7 +7,7 @@ namespace Bloggie.Web.Mappings;
 /// <summary>
 /// Query result TagRow Mappers
 /// </summary>
-[Mapper(AllowNullPropertyAssignment = false, ThrowOnPropertyMappingNullMismatch = true)]
+[Mapper(ThrowOnPropertyMappingNullMismatch = true)]
 public static partial class TagRowExtension
 {
     /// <summary>
@@ -20,7 +20,8 @@ public static partial class TagRowExtension
     [MapperIgnoreSource(nameof(TagRow.BlogPostPageTitle))]
     [MapperIgnoreSource(nameof(TagRow.BlogPostContent))]
     [MapperIgnoreSource(nameof(TagRow.BlogPostShortDescription))]
-    [MapperIgnoreSource(nameof(TagRow.BlogPostFeaturedImageUrl))]
+    [MapperIgnoreSource(nameof(TagRow.BlogPostImageId))]
+    [MapperIgnoreSource(nameof(TagRow.BlogPostImageUrl))]
     [MapperIgnoreSource(nameof(TagRow.BlogPostSlug))]
     [MapperIgnoreSource(nameof(TagRow.BlogPostPublishedDate))]
     [MapperIgnoreSource(nameof(TagRow.BlogPostAuthor))]
@@ -38,13 +39,15 @@ public static partial class TagRowExtension
     [MapProperty(nameof(TagRow.BlogPostPageTitle), nameof(BlogPost.PageTitle))]
     [MapProperty(nameof(TagRow.BlogPostContent), nameof(BlogPost.Content))]
     [MapProperty(nameof(TagRow.BlogPostShortDescription), nameof(BlogPost.ShortDescription))]
-    [MapProperty(nameof(TagRow.BlogPostFeaturedImageUrl), nameof(BlogPost.FeaturedImageUrl))]
     [MapProperty(nameof(TagRow.BlogPostSlug), nameof(BlogPost.Slug))]
     [MapProperty(nameof(TagRow.BlogPostPublishedDate), nameof(BlogPost.PublishedDate))]
     [MapProperty(nameof(TagRow.BlogPostAuthor), nameof(BlogPost.Author))]
     [MapProperty(nameof(TagRow.BlogPostVisible), nameof(BlogPost.Visible))]
     [MapperIgnoreSource(nameof(TagRow.Id))]
     [MapperIgnoreSource(nameof(TagRow.Name))]
+    [MapperIgnoreSource(nameof(TagRow.BlogPostImageId))]
+    [MapperIgnoreSource(nameof(TagRow.BlogPostImageUrl))]
     [MapperIgnoreTarget(nameof(BlogPost.Tags))]
+    [MapperIgnoreTarget(nameof(BlogPost.Images))]
     public static partial BlogPost ToBlogPostModel(this TagRow row);
 }

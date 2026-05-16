@@ -3,7 +3,6 @@ WITH "blog_post_row" AS (SELECT "id",
                                 "page_title",
                                 "content",
                                 "short_description",
-                                "featured_image_url",
                                 "slug",
                                 "published_date",
                                 "author",
@@ -15,7 +14,8 @@ SELECT "BP"."id",
        "BP"."page_title",
        "BP"."content",
        "BP"."short_description",
-       "BP"."featured_image_url",
+       "I"."id"   AS "image_id",
+       "I"."url"  AS "image_url",
        "BP"."slug",
        "BP"."published_date",
        "BP"."author",
@@ -29,3 +29,6 @@ FROM "blog_post_row" AS "BP"
          LEFT OUTER JOIN
      "tags" AS "T"
      ON "BPT"."tag_id" = "T"."id"
+         LEFT OUTER JOIN
+     "images" AS "I"
+     ON "I"."blog_post_id" = "BP"."id"
