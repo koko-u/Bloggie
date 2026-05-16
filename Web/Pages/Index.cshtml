@@ -8,20 +8,5 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     
-    <div>
-      <h3>Tags</h3>
-      <ul>
-        @if (Model.Tags.Any())
-        {
-          @foreach (var tag in Model.Tags)
-          {
-            <li>@tag.Name</li>
-          }
-        }
-        else
-        {
-          <li>No tags found</li>
-        }
-      </ul>
-    </div>
+    
 </div>

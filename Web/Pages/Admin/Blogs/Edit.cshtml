@@ -8,6 +8,7 @@
 @section Styles
 {
   <link rel="stylesheet" href="https://uicdn.toast.com/editor/3.2.2/toastui-editor.min.css" />
+  <link rel="stylesheet" href="~/lib/tom-select/dist/css/tom-select.bootstrap5.min.css" />
 }
 @section Scripts
 {
@@ -28,6 +29,17 @@
       textarea.value = editor.getMarkdown();
     });
 </script>
+  
+  <script src="~/lib/tom-select/dist/js/tom-select.popular.min.js"></script>
+  <script>
+    const tags = new TomSelect('#tag-ids', {
+      plugins: ['remove_button'],
+      maxItems: null,
+      create: false,
+      allowEmptyOption: true,
+      placeholder: 'Select tags',
+    })    
+  </script>
 }
 
 
@@ -55,7 +67,23 @@
         <span asp-validation-for="Blog.PageTitle" bs-feedback></span>
       </div>
     </div>
-
+    
+    <div class="row mb-3">
+      <label class="col-sm-2 col-form-label" asp-for="Blog.TagIds">
+        @Messages.Get("BlogPost.Tags")
+      </label>
+      <div class="col-sm-10">
+        <select id="tag-ids" class="form-select" asp-for="Blog.TagIds" bs-valid autocomplete="off" multiple>
+          <option value="">Select Tags...</option>
+          @foreach (var tag in Model.Tags)
+          {
+            <option value="@tag.Id">@tag.Name</option>
+          }
+        </select>
+        <span asp-validation-for="Blog.TagIds" bs-feedback></span>
+      </div>
+    </div>
+    
     <div class="row mb-3">
       <label class="col-sm-2 col-form-label" asp-for="Blog.Slug">
         @Messages.Get("BlogPost.Slug")

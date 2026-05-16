@@ -9,6 +9,7 @@
   // Model Properties
   "BlogPost.Heading": "ヘッダ",
   "BlogPost.PageTitle": "タイトル",
+  "BlogPost.Tags": "タグ",
   "BlogPost.Content": "本文",
   "BlogPost.ShortDescription": "短文の説明",
   "BlogPost.FeaturedImageUrl": "注目の画像",

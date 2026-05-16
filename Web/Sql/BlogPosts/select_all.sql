@@ -21,4 +21,5 @@ FROM "blog_posts" AS "BP"
          LEFT OUTER JOIN
      "images" AS "I"
      ON "I"."blog_post_id" = "BP"."id"
-
+ORDER BY "BP"."published_date" DESC,
+         "BP"."id";

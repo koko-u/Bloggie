@@ -24,6 +24,11 @@ public sealed class EditBlogForm
     public string? PageTitle { get; set; }
 
     /// <summary>
+    /// Blog's Tags
+    /// </summary>
+    public List<Guid> TagIds { get; set; } = [];
+
+    /// <summary>
     /// Blog Content ( Markdown format )
     /// </summary>
     public string? ContentMarkdown { get; set; }

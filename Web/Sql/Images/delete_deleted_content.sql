@@ -2,4 +2,4 @@
 DELETE
 FROM "images"
 WHERE "blog_post_id" = @BlogPostId
-  AND "url" NOT IN (@ImageUrls)
+  AND NOT ("url" = ANY (@ImageUrls))

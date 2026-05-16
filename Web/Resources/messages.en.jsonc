@@ -9,6 +9,7 @@
   // Model Properties
   "BlogPost.Heading": "Heading",
   "BlogPost.PageTitle": "Page Title",
+  "BlogPost.Tags": "Tags",
   "BlogPost.Content": "Content",
   "BlogPost.ShortDescription": "Short Description",
   "BlogPost.FeaturedImageUrl": "Featured Image",

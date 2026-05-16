@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using FastCloner.SourceGenerator.Shared;
 
 namespace Bloggie.Web.Models.Domain;
@@ -19,9 +18,4 @@ public sealed class Tag
     /// Tag's name
     /// </summary>
     public required string Name { get; set; }
-
-    /// <summary>
-    /// Blog posts associated with this tag
-    /// </summary>
-    public List<BlogPost> BlogPosts { get; set; } = [];
 }

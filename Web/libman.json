@@ -84,6 +84,23 @@
         "font/fonts/bootstrap-icons.woff",
         "font/fonts/bootstrap-icons.woff2"
       ]
+    },
+    {
+      "library": "tom-select@2.6.1",
+      "destination": "wwwroot/lib/tom-select",
+      "files": [
+        "LICENSE",
+        "package.json",
+        "README.md",
+        "dist/js/tom-select.popular.js",
+        "dist/js/tom-select.popular.js.map",
+        "dist/js/tom-select.popular.min.js",
+        "dist/js/tom-select.popular.min.js.map",
+        "dist/css/tom-select.bootstrap5.css",
+        "dist/css/tom-select.bootstrap5.css.map",
+        "dist/css/tom-select.bootstrap5.min.css",
+        "dist/css/tom-select.bootstrap5.min.css.map"
+      ]
     }
   ]
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bloggie.Web.Models.Domain;
@@ -39,7 +40,6 @@ public static partial class BlogPostExtension
     [MapperIgnoreSource(nameof(BlogPostRow.PublishedDate))]
     [MapperIgnoreSource(nameof(BlogPostRow.Author))]
     [MapperIgnoreSource(nameof(BlogPostRow.Visible))]
-    [MapperIgnoreTarget(nameof(Tag.BlogPosts))]
     [MapProperty(nameof(BlogPostRow.TagId), nameof(Tag.Id))]
     [MapProperty(nameof(BlogPostRow.TagName), nameof(Tag.Name))]
     public static partial Tag ToTagModel(this BlogPostRow row);
@@ -64,11 +64,14 @@ public static partial class BlogPostExtension
     /// </summary>
     /// <param name="model"></param>
     /// <returns></returns>
-    [MapperIgnoreSource(nameof(BlogPost.Tags))]
     [MapperIgnoreSource(nameof(BlogPost.Images))]
     [MapperIgnoreTarget(nameof(EditBlogForm.ImageIds))]
     [MapProperty(nameof(BlogPost.Content), nameof(EditBlogForm.ContentMarkdown))]
+    [MapProperty(nameof(BlogPost.Tags), nameof(EditBlogForm.TagIds), Use = nameof(MapTags))]
     public static partial EditBlogForm ToEditBlogForm(this BlogPost model);
+
+    [UserMapping(Default = false)]
+    private static List<Guid> MapTags(List<Tag> tags) => tags.Select(t => t.Id).ToList();
 
     /// <summary>
     /// Grouping blog_posts query result into BlogPost list
@@ -77,10 +80,12 @@ public static partial class BlogPostExtension
     /// <returns></returns>
     public static IEnumerable<BlogPost> GroupByBlogPost(this IEnumerable<BlogPostRow> rows)
     {
-        return rows.GroupBy(r => r.ToBlogPostModel())
+        return rows.GroupBy(r => r.Id)
             .Select(g =>
             {
-                var blogPost = g.Key.FastDeepClone();
+                var blogPostId = g.Key;
+                var blogPost = g.First(r => r.Id == blogPostId).ToBlogPostModel();
+
                 blogPost.Tags = g.Where(r => r.TagId.HasValue).Select(r => r.ToTagModel()).ToList();
                 blogPost.Images = g.Where(r => r.ImageId.HasValue)
                     .Select(r => r.ToImageModel())
